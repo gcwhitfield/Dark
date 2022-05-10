@@ -1457,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321435195190, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321435195190, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Lightmapping
@@ -1578,7 +1578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321435195190, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7586093321435195190, guid: 4b437f1c2454a2c409b1b7f35e69d661, type: 3}
       propertyPath: m_Lightmapping
