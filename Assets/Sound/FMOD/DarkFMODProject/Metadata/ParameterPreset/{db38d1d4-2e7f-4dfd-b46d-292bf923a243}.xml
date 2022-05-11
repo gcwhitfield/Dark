@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{db38d1d4-2e7f-4dfd-b46d-292bf923a243}">
+		<property name="name">
+			<value>Dirt Footstep Variation</value>
+		</property>
+		<relationship name="folder">
+			<destination>{358ac61b-5be9-40c6-82d9-090e074e0f20}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f3a32704-092e-4b97-9311-7d0c9c3f64ff}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f3a32704-092e-4b97-9311-7d0c9c3f64ff}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>8</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

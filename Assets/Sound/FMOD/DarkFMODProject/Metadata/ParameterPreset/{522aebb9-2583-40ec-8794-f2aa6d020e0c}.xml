@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{522aebb9-2583-40ec-8794-f2aa6d020e0c}">
+		<property name="name">
+			<value>Tile Footstep Varation</value>
+		</property>
+		<relationship name="folder">
+			<destination>{358ac61b-5be9-40c6-82d9-090e074e0f20}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6b1373cb-d855-4d79-9ee2-df51654af137}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6b1373cb-d855-4d79-9ee2-df51654af137}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>8</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

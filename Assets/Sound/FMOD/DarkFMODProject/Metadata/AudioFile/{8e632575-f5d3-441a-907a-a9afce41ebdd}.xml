@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{8e632575-f5d3-441a-907a-a9afce41ebdd}">
+		<property name="assetPath">
+			<value>Paper UI.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0208390022675737</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{833785f1-79af-437c-9f8d-4b5fd271c6d2}</destination>
+		</relationship>
+	</object>
+</objects>
