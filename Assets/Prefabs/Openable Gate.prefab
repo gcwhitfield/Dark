@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceAddPoint: {fileID: 437882523301720217}
+  FMODEvent: event:/Environment/Door Open
 --- !u!1001 &2534633743049362776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -482,3 +483,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceAddPoint: {fileID: 5218381896500398781}
+  FMODEvent: event:/Environment/Door Open
