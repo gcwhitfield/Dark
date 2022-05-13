@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.UI;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -13,6 +14,9 @@ public class PlayerController : Singleton<PlayerController>
     [Range(0.1f, 1)] public float lookSpeed = 1;
     public bool invertMouseYAxis = false;
 
+    [Header("Crosshair Icon Display")]
+    public Image crosshairIcon;
+
     private Camera playerCamera;
     private Vector3 velocity; // this vector gets set from OnPlayerMove and will move the
     // player in Update
@@ -21,6 +25,7 @@ public class PlayerController : Singleton<PlayerController>
     private float sprintFactor = 1;
 
     float footstepsAudioCountdownTimer = 0.3f; // used in Update
+
 
     private void Start()
     {
@@ -76,16 +81,24 @@ public class PlayerController : Singleton<PlayerController>
 
     void Update()
     {
-        { // Player can interact with objects when they look at interactables
+        { // Show icon of interactable objet when the player looks at it
             Ray r = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
             if (Physics.Raycast(playerCamera.transform.position, r.direction * 10, out hit))
             {
-                //Debug.Log("Object hit: " + hit.transform.name);
-                Door d = hit.transform.GetComponent<Door>();
-                if (d != null)
+                Interactable i = hit.transform.GetComponent<Interactable>();
+                if (i != null)
                 {
-                    d.OpenDoor((hit.point - transform.position).normalized * Vector3.Dot(r.direction, hit.transform.forward) * 100);
+                    // show Interactable icon
+                    //d.OpenDoor((hit.point - transform.position).normalized * Vector3.Dot(r.direction, hit.transform.forward) * 100);
+                    if (!crosshairIcon.gameObject.activeSelf)
+                    {
+                        crosshairIcon.sprite = i.icon;
+                    }
+                }
+
+                { // TODO: show door icon
+
                 }
             }
         }

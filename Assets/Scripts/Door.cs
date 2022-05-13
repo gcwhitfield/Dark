@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Interactable
 {
     public Transform forceAddPoint;
     Rigidbody rb;
@@ -10,9 +10,6 @@ public class Door : MonoBehaviour
 
     FMOD.Studio.EventInstance evtInstance;
     bool opened = false;
-
-    [Header("Sound")]
-    public string FMODEvent;
 
     // Start is called before the first frame update
     void Start()
