@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour {
+public class DemoCharacterController : MonoBehaviour {
 
     public float speed = 10.0f;
     public float sprintSpeed = 1000f;
@@ -25,7 +25,7 @@ public class CharacterController : MonoBehaviour {
 	void Update () {
                     
             float speedModifier = 1;
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift)) {
             speedModifier = sprintSpeed;
         } else {
             speedModifier = speed;
