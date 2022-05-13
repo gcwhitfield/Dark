@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="ParameterPreset" id="{522aebb9-2583-40ec-8794-f2aa6d020e0c}">
 		<property name="name">
-			<value>Tile Footstep Varation</value>
+			<value>Tile Footstep Variation</value>
 		</property>
 		<relationship name="folder">
 			<destination>{358ac61b-5be9-40c6-82d9-090e074e0f20}</destination>

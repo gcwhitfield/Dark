@@ -25,10 +25,7 @@ public class Door : MonoBehaviour
     {
         if (!opened)
         {
-            evtInstance = FMODUnity.RuntimeManager.CreateInstance(FMODEvent);
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(evtInstance, transform);
-            evtInstance.start();
-            evtInstance.release();
+            AudioManager.Instance.PlayAudio(AudioManager.Instance.normalDoorOpen, gameObject);
             opened = true;
         }
         rb.AddForce(forceVector, ForceMode.Force);

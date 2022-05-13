@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : Singleton<PlayerController>
@@ -18,6 +19,8 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 movement;
     private CharacterController cc;
     private float sprintFactor = 1;
+
+    float footstepsAudioCountdownTimer = 0.3f; // used in Update
 
     private void Start()
     {
@@ -82,7 +85,6 @@ public class PlayerController : Singleton<PlayerController>
                 Door d = hit.transform.GetComponent<Door>();
                 if (d != null)
                 {
-                    Debug.Log("Door is not null");
                     d.OpenDoor((hit.point - transform.position).normalized * Vector3.Dot(r.direction, hit.transform.forward) * 100);
                 }
             }
@@ -111,6 +113,24 @@ public class PlayerController : Singleton<PlayerController>
             if (Mathf.Abs(movement.z) < epsilon)
             {
                 movement.z = 0;
+            }
+        }
+
+        { // play footsteps audio every so often
+            if (footstepsAudioCountdownTimer < 0)
+            {
+                // edit the following line to change how often footsteps play
+                footstepsAudioCountdownTimer = Random.Range(0.3f, 0.4f);
+
+                FMOD.Studio.EventInstance evt = AudioManager.Instance.SetupAudio(AudioManager.Instance.footstep, gameObject);
+                evt.setParameterByName("Tile Footstep Variation", Random.Range(0, 7));
+                evt.setVolume(0.1f);
+                evt.start();
+                evt.release();
+            }
+            else if (movement.x != 0 || movement.z != 0)
+            {
+                footstepsAudioCountdownTimer -= Time.deltaTime;
             }
         }
     }
