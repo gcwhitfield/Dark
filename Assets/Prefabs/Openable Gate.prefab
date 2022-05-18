@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e3f6c6ea7e47ac9fc2c9e1059d8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   forceAddPoint: {fileID: 437882523301720217}
-  FMODEvent: event:/Environment/Door Open
 --- !u!1001 &2534633743049362776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -482,5 +482,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e3f6c6ea7e47ac9fc2c9e1059d8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   forceAddPoint: {fileID: 5218381896500398781}
-  FMODEvent: event:/Environment/Door Open

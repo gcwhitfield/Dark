@@ -419,10 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bd9f6950520463d82a1359a6c367d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 5.46
   sprintMovementIncreaseFactor: 1
-  lookSpeed: 1
+  lookSpeed: 0.473
   invertMouseYAxis: 0
+  crosshairIcon: {fileID: 5063301000699488308}
 --- !u!143 &1755296943018178880
 CharacterController:
   m_ObjectHideFlags: 0

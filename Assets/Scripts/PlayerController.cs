@@ -26,6 +26,8 @@ public class PlayerController : Singleton<PlayerController>
 
     float footstepsAudioCountdownTimer = 0.3f; // used in Update
 
+    Sprite defaultCrossHairIcon;
+
 
     private void Start()
     {
@@ -34,6 +36,10 @@ public class PlayerController : Singleton<PlayerController>
 
         // lock the player's cursor
         Cursor.lockState = CursorLockMode.Locked;
+
+        // the default crosshair icon is the one that is initially set
+        // as the "sprite" on the crossharIcon gameObject
+        defaultCrossHairIcon = crosshairIcon.sprite;
     }
 
     // =====================================================================
@@ -89,17 +95,16 @@ public class PlayerController : Singleton<PlayerController>
                 Interactable i = hit.transform.GetComponent<Interactable>();
                 if (i != null)
                 {
-                    // show Interactable icon
+                    // show interactable icon
                     //d.OpenDoor((hit.point - transform.position).normalized * Vector3.Dot(r.direction, hit.transform.forward) * 100);
-                    if (!crosshairIcon.gameObject.activeSelf)
-                    {
-                        crosshairIcon.sprite = i.icon;
-                    }
+                    crosshairIcon.sprite = i.sprite;
+                } else
+                { // show default icon
+                    crosshairIcon.sprite = defaultCrossHairIcon;
                 }
-
-                { // TODO: show door icon
-
-                }
+            } else // show default icon
+            {
+                crosshairIcon.sprite = defaultCrossHairIcon;
             }
         }
 
