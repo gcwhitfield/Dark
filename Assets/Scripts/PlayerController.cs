@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PlayerController : Singleton<PlayerController>
 {
+    // when set to true, the player cannot control the character
+    bool disableControls = false;
 
     // ==============================
     // ========== movement ==========
@@ -39,6 +41,11 @@ public class PlayerController : Singleton<PlayerController>
     Interactable currInteractable;
     bool isMouseHeld = false;
 
+    // ==============================
+    // ======= user interface =======
+    // ==============================
+    [Header("User Interface")]
+    public GameObject noteUI;
 
     private void Start()
     {
@@ -54,12 +61,14 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     // =====================================================================
-    // =====================================================================
+    // ========================== input ====================================
     // The following functions are called from PlayerInputHandler.cs when
     // the player provides a specific input
     // =====================================================================
     public void OnMove(CallbackContext context)
     {
+        if (disableControls) return;
+
         if (context.performed || context.started)
         {
             velocity.x = context.ReadValue<Vector2>().x * moveSpeed * sprintFactor;
@@ -77,6 +86,8 @@ public class PlayerController : Singleton<PlayerController>
     // This function is called from PlayerInputHandler.cs
     public void OnSprint(CallbackContext context)
     {
+        if (disableControls) return;
+
         if (context.started || context.performed)
         {
             sprintFactor = sprintMovementIncreaseFactor;
@@ -110,20 +121,59 @@ public class PlayerController : Singleton<PlayerController>
 
     IEnumerator ExecuteMouseHeldEvent(CallbackContext context)
     {
+        if (disableControls) yield break;
         yield return null;
         while (isMouseHeld)
         {
             currInteractable.MouseHeld(context);
             Debug.Log("Mouse held");
+            if (disableControls) yield break;
             yield return null;
         }
     }
 
+    // Reads mouse input data and rotates the camera accordingly.
+    Quaternion oldRotation;
+    Vector2 oldMousePos = Vector2.zero;
+    public void OnMouseMove(CallbackContext context)
+    {
+        if (disableControls) return;
+        Debug.Log(context.ReadValue<Vector2>());
+        float camLookMaxAngle = 60; // maximum euler angle x for looking
+
+        float mousex = context.ReadValue<Vector2>().x;
+        if (!Mathf.Approximately(mousex, 0))
+        {
+            gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
+        }
+
+        float mousey = context.ReadValue<Vector2>().y;
+        if (!Mathf.Approximately(mousey, 0))
+        {
+            int inv = invertMouseYAxis ? 1 : -1;
+            oldRotation = playerCamera.transform.rotation;
+            playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
+            // clamp rotation if camera is rotated out of
+            Vector3 eulers = playerCamera.transform.eulerAngles;
+            float upperBound = 360 - camLookMaxAngle;
+            float lowerBound = camLookMaxAngle;
+
+            // if out of bounds
+            if (eulers.x < upperBound && eulers.x > lowerBound)
+            {
+                playerCamera.transform.rotation = oldRotation;
+            }
+        }
+
+        oldMousePos = context.ReadValue<Vector2>();
+    }
     // =====================================================================
     // =====================================================================
 
     void Update()
     {
+        if (disableControls) return;
+
         { // Show icon of interactable objet when the player looks at it
             // only update the icon if the mouse button is NOT being held
             if (!isMouseHeld)
@@ -196,34 +246,22 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    // Reads mouse input data and rotates the camera accordingly.
-    Quaternion oldRotation;
-    public void OnMouseMove(CallbackContext context)
+    // =====================================================================
+    // ======================= user interface ==============================
+    // this function is called when the player clicks on a note
+    public void OpenNoteUI()
     {
-        float camLookMaxAngle = 60; // maximum euler angle x for looking
-
-        float mousex = context.ReadValue<Vector2>().x;
-        if (!Mathf.Approximately(mousex, 0))
-        {
-            gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
-        }
-
-        float mousey = context.ReadValue<Vector2>().y;
-        if (!Mathf.Approximately(mousey, 0))
-        {
-            int inv = invertMouseYAxis ? 1 : -1;
-            oldRotation = playerCamera.transform.rotation;
-            playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
-            // clamp rotation if camera is rotated out of
-            Vector3 eulers = playerCamera.transform.eulerAngles;
-            float upperBound = 360 - camLookMaxAngle;
-            float lowerBound = camLookMaxAngle;
-
-            // if out of bounds
-            if (eulers.x < upperBound && eulers.x > lowerBound)
-            {
-                playerCamera.transform.rotation = oldRotation;
-            }           
-        }
+        noteUI.SetActive(true);
+        disableControls = true;
+        Cursor.lockState = CursorLockMode.None;
     }
+
+    public void CloseNoteUI()
+    {
+        noteUI.SetActive(false);
+        disableControls = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    // =====================================================================
+    // =====================================================================
 }
