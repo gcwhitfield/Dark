@@ -8,14 +8,15 @@ using UnityEngine.UI;
 
 public class PlayerController : Singleton<PlayerController>
 {
+
+    // ==============================
+    // ========== movement ==========
+    // ==============================
     [Header("Input")]
     [Range(0.5f, 10)] public float moveSpeed = 1;
     [Range(1, 3)] public float sprintMovementIncreaseFactor = 1;
     [Range(0.1f, 1)] public float lookSpeed = 1;
     public bool invertMouseYAxis = false;
-
-    [Header("Crosshair Icon Display")]
-    public Image crosshairIcon;
 
     private Camera playerCamera;
     private Vector3 velocity; // this vector gets set from OnPlayerMove and will move the
@@ -24,9 +25,19 @@ public class PlayerController : Singleton<PlayerController>
     private CharacterController cc;
     private float sprintFactor = 1;
 
+    // ==============================
+    // =========== sound ============
+    // ==============================
     float footstepsAudioCountdownTimer = 0.3f; // used in Update
 
+    // ==============================
+    // ======= interactables ========
+    // ==============================
+    [Header("Crosshair Icon Display")]
+    public Image crosshairIcon;
     Sprite defaultCrossHairIcon;
+    Interactable currInteractable;
+    bool isMouseHeld = false;
 
 
     private void Start()
@@ -80,31 +91,63 @@ public class PlayerController : Singleton<PlayerController>
 
     public void OnInteract(CallbackContext context)
     {
-
+        if (currInteractable)
+        {
+            if (context.started)
+            {
+                isMouseHeld = true;
+                currInteractable.MousePressed(context);
+                Debug.Log("Mouse pressed");
+                StartCoroutine("ExecuteMouseHeldEvent", context);
+            } 
+            else if (context.phase == InputActionPhase.Canceled) {
+                isMouseHeld = false;
+                currInteractable.MouseReleased(context);
+                Debug.Log("Mouse released");
+            }
+        }
     }
+
+    IEnumerator ExecuteMouseHeldEvent(CallbackContext context)
+    {
+        yield return null;
+        while (isMouseHeld)
+        {
+            currInteractable.MouseHeld(context);
+            Debug.Log("Mouse held");
+            yield return null;
+        }
+    }
+
     // =====================================================================
     // =====================================================================
 
     void Update()
     {
         { // Show icon of interactable objet when the player looks at it
-            Ray r = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            RaycastHit hit;
-            if (Physics.Raycast(playerCamera.transform.position, r.direction * 10, out hit))
+            // only update the icon if the mouse button is NOT being held
+            if (!isMouseHeld)
             {
-                Interactable i = hit.transform.GetComponent<Interactable>();
-                if (i != null)
+                Ray r = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+                RaycastHit hit;
+                if (Physics.Raycast(playerCamera.transform.position, r.direction * 10, out hit))
                 {
-                    // show interactable icon
-                    //d.OpenDoor((hit.point - transform.position).normalized * Vector3.Dot(r.direction, hit.transform.forward) * 100);
-                    crosshairIcon.sprite = i.sprite;
-                } else
-                { // show default icon
+                    Interactable i = hit.transform.GetComponent<Interactable>();
+                    if (i != null)
+                    {
+                        // show interactable icon
+                        crosshairIcon.sprite = i.sprite;
+
+                        currInteractable = i;
+                    } else
+                    { // show default icon
+                        crosshairIcon.sprite = defaultCrossHairIcon;
+                    }
+                } else // show default icon
+                {
                     crosshairIcon.sprite = defaultCrossHairIcon;
+                    currInteractable = null;
                 }
-            } else // show default icon
-            {
-                crosshairIcon.sprite = defaultCrossHairIcon;
             }
         }
 
