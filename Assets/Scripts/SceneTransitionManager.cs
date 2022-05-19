@@ -13,14 +13,14 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     public Animator sceneTransitionAnimator;
 
 
-    public void TransitionToScene(string sceneName)
+    public void TransitionToScene(SceneReference scene)
     {
-        StartCoroutine("PlaySceneTransitionAnimation", sceneName);
+        StartCoroutine("PlaySceneTransitionAnimation", scene.ScenePath);
     }
 
-    public void TransitionToSceneInstant(string SceneName)
+    public void TransitionToSceneInstant(SceneReference scene)
     {
-        SceneManager.LoadScene(SceneName);
+        SceneManager.LoadScene(scene.ScenePath);
     }
 
     IEnumerator PlaySceneTransitionAnimation(string s)

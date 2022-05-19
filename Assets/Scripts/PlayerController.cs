@@ -27,6 +27,10 @@ public class PlayerController : Singleton<PlayerController>
     private CharacterController cc;
     private float sprintFactor = 1;
 
+    // when set to true, the player cannot move the camera with the mouse movement
+    // this is used to disable mouse movement when the player is opening doors
+    bool disableMouseMovement = false;
+
     // ==============================
     // =========== sound ============
     // ==============================
@@ -108,43 +112,39 @@ public class PlayerController : Singleton<PlayerController>
             {
                 isMouseHeld = true;
                 currInteractable.MousePressed(context);
-                Debug.Log("Mouse pressed");
-                StartCoroutine("ExecuteMouseHeldEvent", context);
             } 
             else if (context.phase == InputActionPhase.Canceled) {
                 isMouseHeld = false;
                 currInteractable.MouseReleased(context);
-                Debug.Log("Mouse released");
             }
-        }
-    }
-
-    IEnumerator ExecuteMouseHeldEvent(CallbackContext context)
-    {
-        if (disableControls) yield break;
-        yield return null;
-        while (isMouseHeld)
-        {
-            currInteractable.MouseHeld(context);
-            Debug.Log("Mouse held");
-            if (disableControls) yield break;
-            yield return null;
         }
     }
 
     // Reads mouse input data and rotates the camera accordingly.
     Quaternion oldRotation;
-    Vector2 oldMousePos = Vector2.zero;
     public void OnMouseMove(CallbackContext context)
     {
+        if (context.performed) return;
         if (disableControls) return;
-        Debug.Log(context.ReadValue<Vector2>());
+
+        // execute MouseHeld interaction event for the current interactable
+        if (isMouseHeld)
+        {
+            if (currInteractable)
+            {
+                currInteractable.MouseHeld(context);
+            }
+        }
+
         float camLookMaxAngle = 60; // maximum euler angle x for looking
 
         float mousex = context.ReadValue<Vector2>().x;
         if (!Mathf.Approximately(mousex, 0))
         {
-            gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
+            if (!disableMouseMovement)
+            {
+                gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
+            }
         }
 
         float mousey = context.ReadValue<Vector2>().y;
@@ -152,20 +152,21 @@ public class PlayerController : Singleton<PlayerController>
         {
             int inv = invertMouseYAxis ? 1 : -1;
             oldRotation = playerCamera.transform.rotation;
-            playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
-            // clamp rotation if camera is rotated out of
-            Vector3 eulers = playerCamera.transform.eulerAngles;
-            float upperBound = 360 - camLookMaxAngle;
-            float lowerBound = camLookMaxAngle;
-
-            // if out of bounds
-            if (eulers.x < upperBound && eulers.x > lowerBound)
+            if (!disableMouseMovement)
             {
-                playerCamera.transform.rotation = oldRotation;
+                playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
+                // clamp rotation if camera is rotated out of
+                Vector3 eulers = playerCamera.transform.eulerAngles;
+                float upperBound = 360 - camLookMaxAngle;
+                float lowerBound = camLookMaxAngle;
+
+                // if out of bounds
+                if (eulers.x < upperBound && eulers.x > lowerBound)
+                {
+                    playerCamera.transform.rotation = oldRotation;
+                }
             }
         }
-
-        oldMousePos = context.ReadValue<Vector2>();
     }
     // =====================================================================
     // =====================================================================
@@ -246,6 +247,15 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
+    public void DisableMouseMovement()
+    {
+        disableMouseMovement = true;
+    }
+
+    public void EnableMouseMovement()
+    {
+        disableMouseMovement = false;
+    }
     // =====================================================================
     // ======================= user interface ==============================
     // this function is called when the player clicks on a note

@@ -15,17 +15,19 @@ public class Door : Interactable
 
     public override void MousePressed(InputAction.CallbackContext context)
     {
-
+        PlayerController.Instance.DisableMouseMovement();
     }
 
     public override void MouseHeld(InputAction.CallbackContext context)
     {
-
+        Vector2 movement = context.ReadValue<Vector2>();
+        float forceAmt = 5;
+        OpenDoor(forceAmt * movement.y);
     }
 
     public override void MouseReleased(InputAction.CallbackContext context)
     {
-
+        PlayerController.Instance.EnableMouseMovement();
     }
 
     // Start is called before the first frame update
@@ -35,13 +37,13 @@ public class Door : Interactable
     }
 
     // call this function to open the door
-    public void OpenDoor(Vector3 forceVector)
+    public void OpenDoor(float torqueAmt)
     {
         if (!opened)
         {
             AudioManager.Instance.PlayAudio(AudioManager.Instance.normalDoorOpen, gameObject);
             opened = true;
         }
-        rb.AddForce(forceVector, ForceMode.Force);
+        rb.AddTorque(transform.forward * torqueAmt, ForceMode.Force);
     }
 }
