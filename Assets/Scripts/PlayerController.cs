@@ -58,6 +58,7 @@ public class PlayerController : Singleton<PlayerController>
 
         // lock the player's cursor
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         // the default crosshair icon is the one that is initially set
         // as the "sprite" on the crossharIcon gameObject
@@ -188,16 +189,19 @@ public class PlayerController : Singleton<PlayerController>
                     {
                         // show interactable icon
                         crosshairIcon.sprite = i.sprite;
+                        crosshairIcon.gameObject.SetActive(true);
 
                         currInteractable = i;
                     } else
                     { // show default icon
                         crosshairIcon.sprite = defaultCrossHairIcon;
+                        crosshairIcon.gameObject.SetActive(false);
                     }
                 } else // show default icon
                 {
                     crosshairIcon.sprite = defaultCrossHairIcon;
                     currInteractable = null;
+                    crosshairIcon.gameObject.SetActive(false);
                 }
             }
         }
@@ -264,6 +268,7 @@ public class PlayerController : Singleton<PlayerController>
         noteUI.SetActive(true);
         disableControls = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void CloseNoteUI()
@@ -271,6 +276,7 @@ public class PlayerController : Singleton<PlayerController>
         noteUI.SetActive(false);
         disableControls = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     // =====================================================================
     // =====================================================================

@@ -6,9 +6,9 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Door : Interactable
 {
-    public Transform forceAddPoint;
     Rigidbody rb;
     HingeJoint h;
+    public Vector3 torqueVector;
 
     FMOD.Studio.EventInstance evtInstance;
     bool opened = false;
@@ -44,6 +44,6 @@ public class Door : Interactable
             AudioManager.Instance.PlayAudio(AudioManager.Instance.normalDoorOpen, gameObject);
             opened = true;
         }
-        rb.AddTorque(transform.forward * torqueAmt, ForceMode.Force);
+        rb.AddTorque(transform.localToWorldMatrix * torqueVector.normalized * torqueAmt, ForceMode.Force);
     }
 }
