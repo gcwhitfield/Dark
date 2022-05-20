@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="Snapshot" id="{49848d11-14f6-4b40-b8c1-c1ca42349a10}">
+		<property name="name">
+			<value>Stone Hallway</value>
+		</property>
+		<relationship name="mixer">
+			<destination>{a9d0d7ae-394f-42af-a994-680d1a247585}</destination>
+		</relationship>
+		<relationship name="automatableProperties">
+			<destination>{882213d1-dbac-428c-9a4f-3846d6428afa}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{b62c9043-8028-4cc6-83b8-9de4b197ddbd}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{85553af4-7be3-4664-858d-78cdcf9f9c1d}</destination>
+		</relationship>
+		<relationship name="snapshotMasterTrack">
+			<destination>{ba0b30fb-ec27-42d7-9f9c-dfdff069c9cd}</destination>
+		</relationship>
+		<relationship name="snapshotProperties">
+			<destination>{edd2fcba-74d2-4ac5-8838-0b09d901a6a8}</destination>
+			<destination>{c346f3d3-0fe3-4990-ba6f-48613b077efe}</destination>
+			<destination>{eb0f6f85-4392-4483-a193-69035c20a7dc}</destination>
+		</relationship>
+		<relationship name="snapshotTracks">
+			<destination>{e69941c6-3533-4b8f-b820-27449c675a02}</destination>
+		</relationship>
+	</object>
+	<object class="EventAutomatableProperties" id="{882213d1-dbac-428c-9a4f-3846d6428afa}" />
+	<object class="MarkerTrack" id="{b62c9043-8028-4cc6-83b8-9de4b197ddbd}" />
+	<object class="Timeline" id="{85553af4-7be3-4664-858d-78cdcf9f9c1d}" />
+	<object class="SnapshotMasterTrack" id="{ba0b30fb-ec27-42d7-9f9c-dfdff069c9cd}" />
+	<object class="SnapshotProperty" id="{edd2fcba-74d2-4ac5-8838-0b09d901a6a8}">
+		<property name="propertyName">
+			<value>decayTime</value>
+		</property>
+		<property name="value">
+			<value>3100</value>
+		</property>
+		<relationship name="automatableObject">
+			<destination>{090713fb-ade0-4c41-9686-9e2a3063af27}</destination>
+		</relationship>
+	</object>
+	<object class="SnapshotProperty" id="{c346f3d3-0fe3-4990-ba6f-48613b077efe}">
+		<property name="propertyName">
+			<value>HFReference</value>
+		</property>
+		<property name="value">
+			<value>8000</value>
+		</property>
+		<relationship name="automatableObject">
+			<destination>{090713fb-ade0-4c41-9686-9e2a3063af27}</destination>
+		</relationship>
+	</object>
+	<object class="SnapshotProperty" id="{eb0f6f85-4392-4483-a193-69035c20a7dc}">
+		<property name="propertyName">
+			<value>lateDelay</value>
+		</property>
+		<property name="value">
+			<value>71</value>
+		</property>
+		<relationship name="automatableObject">
+			<destination>{090713fb-ade0-4c41-9686-9e2a3063af27}</destination>
+		</relationship>
+	</object>
+	<object class="SnapshotTrack" id="{e69941c6-3533-4b8f-b820-27449c675a02}">
+		<relationship name="mixerStrip">
+			<destination>{9a9b9909-5b53-412d-a8df-3f8ec01ce157}</destination>
+		</relationship>
+	</object>
+</objects>

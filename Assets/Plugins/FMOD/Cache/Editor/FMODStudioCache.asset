@@ -20,6 +20,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 117664
   Exists: 1
+--- !u!114 &-7752437982595566104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Door Open/Door Open Amount
+  m_EditorClassIdentifier: 
+  Name: Door Open Amount
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1695460895
+    data2: 3182960092
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7716978460496465239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +139,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
-    Value: 1678
+    Value: 2012
   Exists: 1
 --- !u!114 &-6605467766758921825
 MonoBehaviour:
@@ -166,6 +190,30 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1584
+  Exists: 1
+--- !u!114 &-5748433188534442878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Door Open/Door Velocity
+  m_EditorClassIdentifier: 
+  Name: Door Velocity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1227664214
+    data2: 3010552184
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-5580193923129464213
 MonoBehaviour:
@@ -217,7 +265,34 @@ MonoBehaviour:
   Parameters:
   - {fileID: -45866042338665212}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 5.6
+  Length: 0
+--- !u!114 &-5057816943551661911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Large Hall
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Large Hall
+  Guid:
+    Data1: 1940581306
+    Data2: 1216216897
+    Data3: 747348925
+    Data4: 759943947
+  Banks:
+  - {fileID: 5808512611266167549}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
   Length: 0
 --- !u!114 &-4745162386297415877
 MonoBehaviour:
@@ -254,10 +329,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
-    Value: 1681952
+    Value: 1950144
   Exists: 1
 --- !u!114 &-3979004192147347988
 MonoBehaviour:
@@ -321,10 +396,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
-    Value: 813824
+    Value: 1322144
   Exists: 1
 --- !u!114 &-1567882471620466179
 MonoBehaviour:
@@ -427,13 +502,15 @@ MonoBehaviour:
     Data4: 147264509
   Banks:
   - {fileID: -2376450478309437399}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7752437982595566104}
+  - {fileID: -5748433188534442878}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 6200
 --- !u!114 &-549513367848632465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +526,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
     Value: 572064
@@ -508,12 +585,15 @@ MonoBehaviour:
   - {fileID: 6492708338384015401}
   - {fileID: -5543736507550858872}
   - {fileID: 3392180792098942967}
+  - {fileID: 582082624054946075}
+  - {fileID: -5057816943551661911}
+  - {fileID: 4608721456678144434}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5808512611266167549}
   StringsBanks:
   - {fileID: -7021651570041991282}
-  cacheTime: 637885661490000000
+  cacheTime: 637886363910000000
   cacheVersion: 10
 --- !u!114 &382880557472246881
 MonoBehaviour:
@@ -539,6 +619,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &582082624054946075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Stone Hallway
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Stone Hallway
+  Guid:
+    Data1: 1233423633
+    Data2: 1262490870
+    Data3: -893271624
+    Data4: 278541378
+  Banks:
+  - {fileID: 5808512611266167549}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &848147374878025627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,11 +668,11 @@ MonoBehaviour:
   - {fileID: -2376450478309437399}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 8.400001
-  Length: 0
+  MinDistance: 0.39999998
+  MaxDistance: 1.4
+  Length: 60000
 --- !u!114 &1995167934179787678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +688,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Monster.bank
   Name: Monster
   StudioPath: bank:/Monster
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
     Value: 117664
@@ -612,7 +719,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 0
+  Length: 888
 --- !u!114 &3440961805832341985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,10 +755,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
-    Value: 10880
+    Value: 10656
   Exists: 1
 --- !u!114 &3776775598391644042
 MonoBehaviour:
@@ -700,6 +807,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 8.400001
   Length: 0
+--- !u!114 &4608721456678144434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Environment/Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Environment/Ambience
+  Guid:
+    Data1: -1343146864
+    Data2: 1307049482
+    Data3: 260292263
+    Data4: 980186725
+  Banks:
+  - {fileID: -2376450478309437399}
+  - {fileID: -4127952821129447474}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 44000
 --- !u!114 &5808512611266167549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,10 +850,10 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637885661490000000
+  lastModified: 637886363910000000
   FileSizes:
   - Name: Desktop
-    Value: 1584
+    Value: 4232
   Exists: 1
 --- !u!114 &5824382309457549658
 MonoBehaviour:
@@ -746,7 +881,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 114076
+  Length: 124000
 --- !u!114 &6138472015392450335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +908,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 10000
 --- !u!114 &6492708338384015401
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@
 			<destination>{b669b7f5-4509-411e-a705-9b35f65542b8}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{03162cae-4622-41f0-9a01-47a6a0998b50}</destination>
+			<destination>{6672a4ec-eff3-4587-a438-084ced0fdcdd}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{b23fedf0-9951-475a-b047-64077d432479}" />
@@ -114,6 +114,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{52469041-1d80-4426-b615-982e0f69c55c}">
+		<property name="volume">
+			<value>-6.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{61042970-82d5-4db3-accd-9aede4a63605}</destination>
 		</relationship>
@@ -192,7 +195,7 @@
 			<value>4.4000000000000004</value>
 		</property>
 		<property name="length">
-			<value>1</value>
+			<value>0.97820168067226909</value>
 		</property>
 		<property name="name">
 			<value>Slam Shut</value>
@@ -281,6 +284,9 @@
 		<property name="length">
 			<value>4</value>
 		</property>
+		<property name="triggerConditionMode">
+			<value>1</value>
+		</property>
 		<relationship name="timeline">
 			<destination>{54a59a39-3a86-4a48-ac18-a118b66991a6}</destination>
 		</relationship>
@@ -292,6 +298,7 @@
 		</relationship>
 		<relationship name="triggerConditions">
 			<destination>{92e45eb3-6839-4e38-8f19-b4e9c4095e85}</destination>
+			<destination>{b9deb5b5-5cb8-4f58-9074-8385fbb09d0b}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionRegion" id="{16ff0a68-d7a2-4c24-85f1-6496a7e60fda}">
@@ -410,6 +417,17 @@
 			<destination>{25024a4c-81be-4738-a84a-089a13772143}</destination>
 		</relationship>
 	</object>
+	<object class="ParameterCondition" id="{b9deb5b5-5cb8-4f58-9074-8385fbb09d0b}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{b879d18f-9f30-40e4-aee8-136decbbf64e}</destination>
+		</relationship>
+	</object>
 	<object class="ParameterCondition" id="{4bef4a40-010d-453f-9de5-4af2528d682d}">
 		<property name="minimum">
 			<value>0</value>
@@ -433,7 +451,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{d916a999-20a3-441e-9d60-1c792a26fbea}" />
-	<object class="SpatialiserEffect" id="{61b55c0d-3597-45b8-91f2-a04120f5bfef}" />
+	<object class="SpatialiserEffect" id="{61b55c0d-3597-45b8-91f2-a04120f5bfef}">
+		<property name="distanceRolloffType">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="AutomationCurve" id="{a98d94b6-17f3-4bdb-a9c7-8e6db43aa4a2}">
 		<relationship name="parameter">
 			<destination>{25024a4c-81be-4738-a84a-089a13772143}</destination>
@@ -454,6 +476,7 @@
 			<destination>{300d77f3-c18a-44d6-97d5-15882913a440}</destination>
 			<destination>{65b61291-5049-4495-868b-ffbe31716143}</destination>
 			<destination>{2f77b87a-21f2-4213-88a1-9990b26faf2f}</destination>
+			<destination>{8908689f-5dcf-4939-a7d5-5c3b17e7526c}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationCurve" id="{5ac115b0-f98c-460f-96f2-53dbcf2486b8}">
@@ -463,6 +486,8 @@
 		<relationship name="automationPoints">
 			<destination>{ccae5ba7-e976-41d5-b785-bbc732c5efdd}</destination>
 			<destination>{a1910c01-a7e5-4c42-8f92-13dcbadd59db}</destination>
+			<destination>{d56e374d-3adb-4fa3-8bf4-f879784484e8}</destination>
+			<destination>{195b0f67-9f43-4dba-86f1-1205299b9b62}</destination>
 		</relationship>
 	</object>
 	<object class="EventSound" id="{ca06bf93-7f19-4619-9865-183dd92df080}">
@@ -499,7 +524,7 @@
 			<value>-80</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.827864826</value>
+			<value>-0.231579483</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{6c20f8ab-fd3f-49ec-882c-f035798950a0}">
@@ -512,7 +537,7 @@
 	</object>
 	<object class="AutomationPoint" id="{79ef027b-af19-4596-9efb-3c39bbbfd7ce}">
 		<property name="position">
-			<value>0.10000000000000001</value>
+			<value>0.17000000000000001</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -520,13 +545,13 @@
 	</object>
 	<object class="AutomationPoint" id="{dc671e01-234e-433d-855d-b3da92b2f973}">
 		<property name="position">
-			<value>0.90000000000000002</value>
+			<value>0.84999999999999998</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>1</value>
+			<value>0.100355074</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4c67bf6a-c53b-4a0e-abff-9c63df75bde5}">
@@ -539,7 +564,7 @@
 	</object>
 	<object class="AutomationPoint" id="{300d77f3-c18a-44d6-97d5-15882913a440}">
 		<property name="position">
-			<value>0.30000000000000004</value>
+			<value>0.19</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -550,7 +575,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-80</value>
 		</property>
 		<property name="curveShape">
 			<value>0.762164056</value>
@@ -564,7 +589,15 @@
 			<value>-80</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.547252119</value>
+			<value>-0.274732232</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8908689f-5dcf-4939-a7d5-5c3b17e7526c}">
+		<property name="position">
+			<value>0.62857142857142856</value>
+		</property>
+		<property name="value">
+			<value>3.81469727e-06</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ccae5ba7-e976-41d5-b785-bbc732c5efdd}">
@@ -584,6 +617,22 @@
 		</property>
 		<property name="value">
 			<value>-7.5</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{d56e374d-3adb-4fa3-8bf4-f879784484e8}">
+		<property name="position">
+			<value>0.80000000000000004</value>
+		</property>
+		<property name="value">
+			<value>-5</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{195b0f67-9f43-4dba-86f1-1205299b9b62}">
+		<property name="position">
+			<value>0.57999999999999996</value>
+		</property>
+		<property name="value">
+			<value>-7</value>
 		</property>
 	</object>
 </objects>

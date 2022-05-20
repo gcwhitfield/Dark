@@ -18,20 +18,22 @@ public class AudioManager : SingletonPersistant<AudioManager>
         return audioInstance;
     }
 
-    public void PlayAudio(EventReference audio, GameObject gb)
+    public FMOD.Studio.EventInstance PlayAudio(EventReference audio, GameObject gb)
     {
         FMOD.Studio.EventInstance audioInstance;
         audioInstance = RuntimeManager.CreateInstance(audio);
         RuntimeManager.AttachInstanceToGameObject(audioInstance, gb.transform);
         audioInstance.start();
         audioInstance.release();
+        return audioInstance;
     }
 
-    public void PlayAudioNoRelease(EventReference audio, GameObject gb)
+    public FMOD.Studio.EventInstance PlayAudioNoRelease(EventReference audio, GameObject gb)
     {
         FMOD.Studio.EventInstance audioInstance;
         audioInstance = RuntimeManager.CreateInstance(audio);
         RuntimeManager.AttachInstanceToGameObject(audioInstance, gb.transform);
         audioInstance.start();
+        return audioInstance;
     }
 }

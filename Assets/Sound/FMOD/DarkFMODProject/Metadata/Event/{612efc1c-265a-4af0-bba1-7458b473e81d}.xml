@@ -84,10 +84,10 @@
 	<object class="MixerBusPanner" id="{56a256f8-a23e-4f1e-b754-be8117145a34}" />
 	<object class="SingleSound" id="{07123483-38dd-4ff1-a154-17b1290fdb4e}">
 		<property name="length">
-			<value>0.85428571428571343</value>
+			<value>0.83428571428571341</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>10.645714285714281</value>
+			<value>10.66571428571428</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{60cd3ade-943c-4a81-ba9a-6322fd75c261}</destination>
