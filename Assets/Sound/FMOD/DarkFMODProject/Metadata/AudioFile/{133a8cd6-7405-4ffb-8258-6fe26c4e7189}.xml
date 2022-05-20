@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{133a8cd6-7405-4ffb-8258-6fe26c4e7189}">
+		<property name="assetPath">
+			<value>wooden thumps.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>14.597916666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{833785f1-79af-437c-9f8d-4b5fd271c6d2}</destination>
+		</relationship>
+	</object>
+</objects>

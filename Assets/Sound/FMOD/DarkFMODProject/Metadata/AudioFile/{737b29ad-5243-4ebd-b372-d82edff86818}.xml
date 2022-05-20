@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{737b29ad-5243-4ebd-b372-d82edff86818}">
+		<property name="assetPath">
+			<value>creaky_wood_door.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>25.452708333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{833785f1-79af-437c-9f8d-4b5fd271c6d2}</destination>
+		</relationship>
+	</object>
+</objects>

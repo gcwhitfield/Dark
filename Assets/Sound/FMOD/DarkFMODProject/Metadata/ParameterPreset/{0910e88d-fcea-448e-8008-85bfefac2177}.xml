@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{0910e88d-fcea-448e-8008-85bfefac2177}">
+		<property name="name">
+			<value>Door Velocity</value>
+		</property>
+		<relationship name="folder">
+			<destination>{358ac61b-5be9-40c6-82d9-090e074e0f20}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{b879d18f-9f30-40e4-aee8-136decbbf64e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{b879d18f-9f30-40e4-aee8-136decbbf64e}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
