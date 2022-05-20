@@ -9,25 +9,29 @@ public class Note : Interactable
 
     bool opened = false;
 
+    void OnAwake()
+    {
+        if (dialogue == null)
+        {
+            Debug.LogError("'Dialogue' of Note.cs is set to null!");
+        }
+    }
     public override void MousePressed(InputAction.CallbackContext context)
     {
-        if (!opened)
+        if (dialogue != null)
         {
-            PlayerController.Instance.noteUIController.Open();
-        } else
-        {
-            PlayerController.Instance.noteUIController.GoToNextPage();
+            if (!opened)
+            {
+                PlayerController.Instance.noteUIController.Open(dialogue);
+
+                // switch the action map to "Note UI". Navigation of Note UI is handled
+                // in PlayerController.cs
+                PlayerInputHandler.Instance.playerInput.SwitchCurrentActionMap("Note UI");
+            }
         }
     }
 
-    public override void MouseHeld(InputAction.CallbackContext context)
-    {
-
-    }
-
-    public override void MouseReleased(InputAction.CallbackContext context)
-    {
-
-    }
+    public override void MouseHeld(InputAction.CallbackContext context) { }
+    public override void MouseReleased(InputAction.CallbackContext context) { }
 
 }

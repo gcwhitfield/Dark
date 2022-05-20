@@ -146,6 +146,34 @@ public class PlayerController : Singleton<PlayerController>
 
         // remaining look code is handled in Update
     }
+
+    // Called when the player goes to the next page in the note UI
+    public void OnGoToNextPage(CallbackContext context)
+    {
+        if (context.started)
+        {
+            noteUIController.GoToNextPage();
+        }
+    }
+
+    // Called when the player goes to the previous page in the note UI
+    public void OnGoToPreviousPage(CallbackContext context)
+    {
+        if (context.started)
+        {
+            noteUIController.GoToPreviousPage();
+        }
+    }
+
+    // Called when the player presses a button on the keyboard or gamepad to
+    // close the note UI
+    public void OnClose(CallbackContext context)
+    {
+        if (context.started)
+        {
+            noteUIController.Close();
+        }
+    }
     // =====================================================================
     // =====================================================================
 

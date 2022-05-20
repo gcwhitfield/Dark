@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  dialogue: {fileID: 11400000, guid: 6e493feea8ae14f4890ae0a98c0a5e59, type: 2}
 --- !u!64 &220653017
 MeshCollider:
   m_ObjectHideFlags: 0

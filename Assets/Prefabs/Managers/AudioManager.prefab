@@ -57,3 +57,10 @@ MonoBehaviour:
       Data3: -452671838
       Data4: 147264509
     Path: event:/Environment/Door Open
+  pageTurn:
+    Guid:
+      Data1: 1999798775
+      Data2: 1334623517
+      Data3: 1189453224
+      Data4: -1706457465
+    Path: event:/UI/Page Turn

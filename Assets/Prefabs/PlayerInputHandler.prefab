@@ -121,6 +121,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: eba5cf57-c700-47aa-9a41-a6a29773510f
     m_ActionName: Play/MouseLook[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2681915429059368668}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnGoToNextPage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 52d8b3ae-9082-4792-8fde-15c1770bbe7b
+    m_ActionName: Note UI/Go To Next Page[/Keyboard/e,/XboxGamepadMacOS/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2681915429059368668}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnGoToPreviousPage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0800f4be-89ff-427c-b8b7-d1a8e24013e9
+    m_ActionName: Note UI/Go To Previous Page[/Keyboard/q,/XboxGamepadMacOS/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2681915429059368668}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnClose
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c809a7a1-fefc-460a-b777-606cfa3c377a
+    m_ActionName: Note UI/Close[/Keyboard/tab,/XboxGamepadMacOS/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Play
@@ -138,3 +186,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02f71fd0707049339bda7158dfbe193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}

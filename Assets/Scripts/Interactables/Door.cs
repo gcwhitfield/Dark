@@ -54,13 +54,11 @@ public class Door : Interactable
             float doorVelocity = Mathf.Clamp(Mathf.Abs(hingeJoint.velocity) / 360.0f, 0, 1);
             doorOpenAmt = doorOpenAmountMappingCurve.Evaluate(doorOpenAmt);
             doorVelocity = doorVelocityMappingCurve.Evaluate(doorVelocity);
-            print("Door Open Amt: " + doorOpenAmt.ToString());
-            print("Door Velocity: " + doorVelocity.ToString());
             evtInstance.setParameterByName("Door Open Amount", doorOpenAmt);
             evtInstance.setParameterByName("Door Velocity", doorVelocity);
         }
     }
-    // call this function to open the door
+    // Call this function to open the door
     public void OpenDoor(float torqueAmt)
     {
         FMOD.Studio.PLAYBACK_STATE audioState;
