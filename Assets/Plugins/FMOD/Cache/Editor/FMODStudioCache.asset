@@ -139,7 +139,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 2012
@@ -329,7 +329,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 1950144
@@ -396,7 +396,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Environment.bank
   Name: Environment
   StudioPath: bank:/Environment
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 1322144
@@ -526,7 +526,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 572064
@@ -593,7 +593,7 @@ MonoBehaviour:
   - {fileID: 5808512611266167549}
   StringsBanks:
   - {fileID: -7021651570041991282}
-  cacheTime: 637886363910000000
+  cacheTime: 637886451790000000
   cacheVersion: 10
 --- !u!114 &382880557472246881
 MonoBehaviour:
@@ -670,8 +670,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters: []
-  MinDistance: 0.39999998
-  MaxDistance: 1.4
+  MinDistance: 0.2
+  MaxDistance: 3.2
   Length: 60000
 --- !u!114 &1995167934179787678
 MonoBehaviour:
@@ -688,7 +688,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Monster.bank
   Name: Monster
   StudioPath: bank:/Monster
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 117664
@@ -755,7 +755,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 10656
@@ -850,7 +850,7 @@ MonoBehaviour:
   Path: Assets/Sound/FMOD/DarkFMODProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637886363910000000
+  lastModified: 637886451790000000
   FileSizes:
   - Name: Desktop
     Value: 4232
