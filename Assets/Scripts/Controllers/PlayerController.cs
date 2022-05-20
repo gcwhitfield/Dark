@@ -23,7 +23,8 @@ public class PlayerController : Singleton<PlayerController>
     private Camera playerCamera;
     private Vector3 velocity; // This vector gets set from OnPlayerMove and will move the
     // player in Update
-    private Vector3 movement;
+    private Vector3 movement; // vector for moving the player around
+    private Vector3 look; // vector for looking around
     private CharacterController cc;
     private float sprintFactor = 1;
 
@@ -87,6 +88,8 @@ public class PlayerController : Singleton<PlayerController>
         {
             Debug.LogError("Impossible case in OnMove of PlayerController.cs");
         }
+
+        // remaining movement code is handled in Update
     }
 
     // This function is called from PlayerInputHandler.cs
@@ -127,7 +130,7 @@ public class PlayerController : Singleton<PlayerController>
     Quaternion oldRotation;
     public void OnMouseMove(CallbackContext context)
     {
-        if (context.performed) return;
+        //if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled) return;
         if (disableControls) return;
 
         // execute MouseHeld interaction event for the current interactable
@@ -139,37 +142,9 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
 
-        float camLookMaxAngle = 60; // maximum euler angle x for looking
+        look = context.ReadValue<Vector2>();
 
-        float mousex = context.ReadValue<Vector2>().x;
-        if (!Mathf.Approximately(mousex, 0))
-        {
-            if (!disableMouseMovement)
-            {
-                gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
-            }
-        }
-
-        float mousey = context.ReadValue<Vector2>().y;
-        if (!Mathf.Approximately(mousey, 0))
-        {
-            int inv = invertMouseYAxis ? 1 : -1;
-            oldRotation = playerCamera.transform.rotation;
-            if (!disableMouseMovement)
-            {
-                playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
-                // clamp rotation if camera is rotated out of
-                Vector3 eulers = playerCamera.transform.eulerAngles;
-                float upperBound = 360 - camLookMaxAngle;
-                float lowerBound = camLookMaxAngle;
-
-                // if out of bounds
-                if (eulers.x < upperBound && eulers.x > lowerBound)
-                {
-                    playerCamera.transform.rotation = oldRotation;
-                }
-            }
-        }
+        // remaining look code is handled in Update
     }
     // =====================================================================
     // =====================================================================
@@ -231,6 +206,40 @@ public class PlayerController : Singleton<PlayerController>
             if (Mathf.Abs(movement.z) < epsilon)
             {
                 movement.z = 0;
+            }
+        }
+
+        { // Look around (rotate camera and player gameObject) based on input
+            float camLookMaxAngle = 60; // maximum euler angle x for looking
+
+            float mousex = look.x;
+            if (!Mathf.Approximately(mousex, 0))
+            {
+                if (!disableMouseMovement)
+                {
+                    gameObject.transform.Rotate(0, mousex * lookSpeed, 0);
+                }
+            }
+
+            float mousey = look.y;
+            if (!Mathf.Approximately(mousey, 0))
+            {
+                int inv = invertMouseYAxis ? 1 : -1;
+                oldRotation = playerCamera.transform.rotation;
+                if (!disableMouseMovement)
+                {
+                    playerCamera.transform.Rotate(new Vector3(mousey * lookSpeed * inv, 0, 0), Space.Self); ;
+                    // clamp rotation if camera is rotated out of
+                    Vector3 eulers = playerCamera.transform.eulerAngles;
+                    float upperBound = 360 - camLookMaxAngle;
+                    float lowerBound = camLookMaxAngle;
+
+                    // if out of bounds
+                    if (eulers.x < upperBound && eulers.x > lowerBound)
+                    {
+                        playerCamera.transform.rotation = oldRotation;
+                    }
+                }
             }
         }
 

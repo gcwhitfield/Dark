@@ -6,7 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Door : Interactable
 {
-    HingeJoint hingeJoint;
+    new HingeJoint hingeJoint;
     Rigidbody rb;
     HingeJoint h;
     public Vector3 torqueVector;
@@ -15,7 +15,6 @@ public class Door : Interactable
     public AnimationCurve doorVelocityMappingCurve;
 
     FMOD.Studio.EventInstance evtInstance;
-    bool isPlayingAudio = false;
 
     // Start is called before the first frame update
     void Start()
