@@ -8,11 +8,11 @@ using UnityEngine.UI;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    // when set to true, the player cannot control the character
-    bool disableControls = false;
+    // When set to true, the player cannot control the character
+    public bool disableControls = false;
 
     // ==============================
-    // ========== movement ==========
+    // ========== Movement ==========
     // ==============================
     [Header("Input")]
     [Range(0.5f, 10)] public float moveSpeed = 1;
@@ -21,23 +21,23 @@ public class PlayerController : Singleton<PlayerController>
     public bool invertMouseYAxis = false;
 
     private Camera playerCamera;
-    private Vector3 velocity; // this vector gets set from OnPlayerMove and will move the
+    private Vector3 velocity; // This vector gets set from OnPlayerMove and will move the
     // player in Update
     private Vector3 movement;
     private CharacterController cc;
     private float sprintFactor = 1;
 
-    // when set to true, the player cannot move the camera with the mouse movement
+    // When set to true, the player cannot move the camera with the mouse movement
     // this is used to disable mouse movement when the player is opening doors
     bool disableMouseMovement = false;
 
     // ==============================
-    // =========== sound ============
+    // =========== Sound ============
     // ==============================
     float footstepsAudioCountdownTimer = 0.3f; // used in Update
 
     // ==============================
-    // ======= interactables ========
+    // ======= Interactables ========
     // ==============================
     [Header("Crosshair Icon Display")]
     public Image crosshairIcon;
@@ -46,10 +46,11 @@ public class PlayerController : Singleton<PlayerController>
     bool isMouseHeld = false;
 
     // ==============================
-    // ======= user interface =======
+    // ======= User Interface =======
     // ==============================
     [Header("User Interface")]
-    public GameObject noteUI;
+    // Handles opening, closing, and user interface navigation for Note UI
+    public NoteUIController noteUIController = new NoteUIController();
 
     private void Start()
     {
@@ -105,6 +106,7 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
+    // This function is called when the player clicks on an interactable
     public void OnInteract(CallbackContext context)
     {
         if (currInteractable)
@@ -232,7 +234,7 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
 
-        { // play footsteps audio every so often
+        { // Play footsteps audio every so often
             if (footstepsAudioCountdownTimer < 0)
             {
                 // edit the following line to change how often footsteps play
@@ -260,24 +262,16 @@ public class PlayerController : Singleton<PlayerController>
     {
         disableMouseMovement = false;
     }
-    // =====================================================================
-    // ======================= user interface ==============================
-    // this function is called when the player clicks on a note
-    public void OpenNoteUI()
-    {
-        noteUI.SetActive(true);
-        disableControls = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
 
-    public void CloseNoteUI()
+    // =====================================================================
+    // =====================================================================
+
+    // =====================================================================
+    // ========================= User Interface ============================
+    // This function is called when the player clicks on the "Close" button
+    // of the note UI
+    public void NoteUIClose()
     {
-        noteUI.SetActive(false);
-        disableControls = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        noteUIController.Close();
     }
-    // =====================================================================
-    // =====================================================================
 }

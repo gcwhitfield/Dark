@@ -420,12 +420,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bd9f6950520463d82a1359a6c367d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableControls: 0
   moveSpeed: 1.8
   sprintMovementIncreaseFactor: 1
   lookSpeed: 0.473
   invertMouseYAxis: 0
   crosshairIcon: {fileID: 5063301000699488308}
-  noteUI: {fileID: 0}
+  noteUIController:
+    noteUI: {fileID: 4078043656520203646}
 --- !u!143 &1755296943018178880
 CharacterController:
   m_ObjectHideFlags: 0
@@ -536,12 +538,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2177047889417291933, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177047889417291933, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7006979831004726873}
     - target: {fileID: 2177047889417291933, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseNoteUI
+      value: NoteUIClose
       objectReference: {fileID: 0}
     - target: {fileID: 2177047889417291933, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -557,6 +563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
+--- !u!1 &4078043656520203646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5287028155179461259, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
+  m_PrefabInstance: {fileID: 8198612910539151349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7794601018235609853 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2156291101718934792, guid: 21ef2089327ff4041b41470516fb2b58, type: 3}
