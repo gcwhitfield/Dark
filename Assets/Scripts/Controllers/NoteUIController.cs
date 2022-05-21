@@ -8,6 +8,7 @@ public class NoteUIController
 {
 
     public GameObject noteUI;
+    public TMP_Text titleText;
     public TMP_Text text;
     public TMP_Text pageDisplayText;
 
@@ -15,11 +16,11 @@ public class NoteUIController
     public void Open(Dialogue d)
     {
         noteUI.SetActive(true);
-        PlayerController.Instance.disableControls = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         text.SetText(d.text);
+        titleText.SetText(d.title);
         text.pageToDisplay = 1;
         pageDisplayText.text = text.pageToDisplay.ToString() + "/" + text.textInfo.pageCount.ToString();
 
@@ -54,7 +55,6 @@ public class NoteUIController
     public void Close()
     {
         noteUI.SetActive(false);
-        PlayerController.Instance.disableControls = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
