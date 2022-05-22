@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing/Chamber.unity
     guid: 485d16919424442cdabfd112ffaecef0
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 349109a0d0ec4442da055dab60176e0c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9784f9f4e36784dcb963584776d35994, type: 2}

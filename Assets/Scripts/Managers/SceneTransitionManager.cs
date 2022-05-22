@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
-// SceneTransitionManager is a little helpful class that plays an animation before transitioning
-// to the next scene.
-//
-// SceneTransitionManager was was written by George Whitfield in Fall of 2021 for a previous game project,
-// called "Lingua Litis"
+// SceneTransitionManager plays an animation before transitioning to the next scene. It also
+// sends scene loading data asynchronously to LoadingScreenController
 public class SceneTransitionManager : Singleton<SceneTransitionManager>
 {
     public Animator sceneTransitionAnimator;
@@ -30,7 +28,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     {
         if (sceneTransitionAnimator == null)
         {
-            SceneManager.LoadScene(s);
+            StartCoroutine("LoadNextScene");
         }
         else
         {
@@ -66,16 +64,28 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
 
     public float GetSceneLoadProgress()
     {
-        float loadProgress = loadSceneOperation != null ? loadSceneOperation.progress : 0;
-        float unloadProgress = unloadSceneOperation != null ? unloadSceneOperation.progress : 0;
-        return (unloadProgress + loadProgress) / 2.0f;
+        float loadProgress = 0;
+        float unloadProgress = 0;
+
+        // get the progress of both the load and unload operations
+        if (loadSceneOperation != null)
+        {
+            loadProgress = loadSceneOperation.isDone ? 1 : loadSceneOperation.progress;
+        }
+        if (unloadSceneOperation != null)
+        {
+            unloadProgress = unloadSceneOperation.isDone ? 1 : unloadSceneOperation.progress;
+        }
+        float result = (unloadProgress + loadProgress) / 2.0f;
+        return result;
     }
 
     IEnumerator LoadNextScene(string s)
     {
+        SceneManager.LoadScene(GameManager.Instance.loadingScene, LoadSceneMode.Additive);
+        yield return new WaitForSecondsRealtime(0.2f);
         LoadingScreenController.Instance.Show();
-        yield return new WaitForSeconds(1.0f); // wait a sec for the loading screen to appear
-
+        yield return new WaitForSecondsRealtime(2.0f); // wait a sec for the loading screen to appear
 
         // load the new scene
         loadSceneOperation = SceneManager.LoadSceneAsync(s, LoadSceneMode.Additive);
@@ -86,10 +96,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         }
 
         // move the loading screen to the next scene
-        Debug.Log("Destination scene: " + s + " : " + SceneManager.GetSceneByName(s).name);
-        SceneManager.MoveGameObjectToScene(LoadingScreenController.Instance.gameObject, SceneManager.GetSceneByName(s));
+        SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByPath(s));
 
-        unloadSceneOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name, UnloadSceneOptions.None);
+        unloadSceneOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
 
         // unload the previous scene
         while (unloadSceneOperation.progress < 1)
@@ -97,8 +106,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
             LoadingScreenController.Instance.ShowLoadProgress(GetSceneLoadProgress());
             yield return null;
         }
-
-        // the loading screen will be closed by the player from PlayerController.cs when
-        // they hit a button
+        LoadingScreenController.Instance.ShowLoadProgress(GetSceneLoadProgress());
+        LoadingScreenController.Instance.OnReadyToLaunchScene();
+        Destroy(gameObject);
     }
 }

@@ -425,6 +425,7 @@ MonoBehaviour:
   sprintMovementIncreaseFactor: 1
   lookSpeed: 0.473
   invertMouseYAxis: 0
+  playerCamera: {fileID: 3792341614524639440}
   crosshairIcon: {fileID: 5063301000699488308}
   noteUIController:
     noteUI: {fileID: 4078043656520203646}

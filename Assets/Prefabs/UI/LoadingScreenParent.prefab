@@ -81,9 +81,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6104259923698900437}
-  - component: {fileID: 6104259923698900436}
   m_Layer: 5
-  m_Name: LoadingScreen
+  m_Name: LoadingScreenParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,24 +108,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6104259923698900436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6104259923698900438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef87d37c01a14095ae8b003ca741055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 6104259924180274263}
-  loadingProgressSlider: {fileID: 6104259923917762821}
-  text: {fileID: 6104259924817190490}
-  pressAnyButtonToContinueAnimator: {fileID: 6104259925048887481}
-  image: {fileID: 6104259925254983593}
-  animator: {fileID: 6735554454002430876}
 --- !u!1 &6104259923878844620
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +269,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.73
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -520,7 +501,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 42b183aeb8b544cba9a4a7813d471d29, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -971,7 +952,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7c77a3b7577f54ff6af98223d350291e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LevelController : Singleton<LevelController>
+public class TestLevelController : Singleton<TestLevelController>
 {
     public PlayerInputManager playerInputManager;
 

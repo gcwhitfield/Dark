@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 
 public class LoadingScreenController : Singleton<LoadingScreenController>
 {
     // this GameObject will be enabled and disabled to open and close the loading
     // screen
-    public GameObject loadingScreen;
+    GameObject loadingScreen;
 
     public Slider loadingProgressSlider;
     public TMP_Text text;
     public Animator pressAnyButtonToContinueAnimator;
     public Image image;
-    public Animator animator; 
+    public Animator animator;
+
+    public PlayerInput playerInput;
 
     static LoadingScreenInfo nextLoadingScreenInfo;
+
+    // this is set to true by SceneTransitionManager when the next
+    // scene is ready to launch
+    bool ready = false;
+
+    private void Start()
+    {
+        loadingScreen = animator.gameObject;
+        Time.timeScale = 0;
+    }
 
     public void PrepareToShow(LoadingScreenInfo info)
     {
@@ -46,17 +61,15 @@ public class LoadingScreenController : Singleton<LoadingScreenController>
 
     IEnumerator DoClose()
     {
+        Time.timeScale = 1;
         animator.SetTrigger("Close");
         float t = 0;
         while (t < animator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
-
-        // destroy this LoadingScreenController, because there is a new one
-        // in the scene that was just loaded
-        Destroy(gameObject);
+        SceneManager.UnloadSceneAsync(gameObject.scene);
     }
 
     // 'progress' must be a float between 0 and 1
@@ -69,9 +82,22 @@ public class LoadingScreenController : Singleton<LoadingScreenController>
         }
 
         loadingProgressSlider.value = progress;
-        if (Mathf.Approximately(progress, 1))
+    }
+
+    // This function is called when the scene is done loading and ready to be launched.
+    // Called by SceneTransitionManager
+    public void OnReadyToLaunchScene()
+    {
+        pressAnyButtonToContinueAnimator.SetTrigger("Open");
+        ready = true;
+    }
+
+    // Called when the player presses the continue button
+    public void OnContinue(CallbackContext context)
+    {
+        if (ready)
         {
-            pressAnyButtonToContinueAnimator.SetTrigger("Open");
+            Close();
         }
     }
 }

@@ -20,7 +20,7 @@ public class PlayerController : Singleton<PlayerController>
     [Range(0.1f, 1)] public float lookSpeed = 1;
     public bool invertMouseYAxis = false;
 
-    private Camera playerCamera;
+    public Camera playerCamera;
     private Vector3 velocity; // This vector gets set from OnPlayerMove and will move the
     // player in Update
     private Vector3 movement; // vector for moving the player around
@@ -55,7 +55,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start()
     {
-        playerCamera = Camera.main;
         cc = GetComponent<CharacterController>();
 
         // lock the player's cursor
@@ -310,12 +309,5 @@ public class PlayerController : Singleton<PlayerController>
     public void NoteUIClose()
     {
         noteUIController.Close();
-    }
-
-    // This function is called when the player presses a button to continue
-    // in the loading screen
-    public void OnLoadingScreenContinue(CallbackContext context)
-    {
-        LoadingScreenController.Instance.Close();
     }
 }
