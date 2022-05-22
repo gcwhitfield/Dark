@@ -311,4 +311,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         noteUIController.Close();
     }
+
+    // This function is called when the player presses a button to continue
+    // in the loading screen
+    public void OnLoadingScreenContinue(CallbackContext context)
+    {
+        LoadingScreenController.Instance.Close();
+    }
 }

@@ -11,7 +11,10 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : Singleton<SceneTransitionManager>
 {
     public Animator sceneTransitionAnimator;
+    public AsyncOperation loadSceneOperation;
+    public AsyncOperation unloadSceneOperation;
 
+    public bool showLoadScreen = true;
 
     public void TransitionToScene(SceneReference scene)
     {
@@ -50,7 +53,52 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
                 yield return null;
             }
 
-            SceneManager.LoadScene(s);
+            StartCoroutine("LoadNextScene", s);
         }
+    }
+
+    // Returns 'true' when the scene has finished loading. This function is called from
+    // PlayerController.cs in OnLoadingScreenContinue
+    public bool IsSceneDoneLoading()
+    {
+        return GetSceneLoadProgress() > 1 || Mathf.Approximately(GetSceneLoadProgress(), 1);
+    }
+
+    public float GetSceneLoadProgress()
+    {
+        float loadProgress = loadSceneOperation != null ? loadSceneOperation.progress : 0;
+        float unloadProgress = unloadSceneOperation != null ? unloadSceneOperation.progress : 0;
+        return (unloadProgress + loadProgress) / 2.0f;
+    }
+
+    IEnumerator LoadNextScene(string s)
+    {
+        LoadingScreenController.Instance.Show();
+        yield return new WaitForSeconds(1.0f); // wait a sec for the loading screen to appear
+
+
+        // load the new scene
+        loadSceneOperation = SceneManager.LoadSceneAsync(s, LoadSceneMode.Additive);
+        while (loadSceneOperation.progress < 1)
+        {
+            LoadingScreenController.Instance.ShowLoadProgress(GetSceneLoadProgress());
+            yield return null;
+        }
+
+        // move the loading screen to the next scene
+        Debug.Log("Destination scene: " + s + " : " + SceneManager.GetSceneByName(s).name);
+        SceneManager.MoveGameObjectToScene(LoadingScreenController.Instance.gameObject, SceneManager.GetSceneByName(s));
+
+        unloadSceneOperation = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name, UnloadSceneOptions.None);
+
+        // unload the previous scene
+        while (unloadSceneOperation.progress < 1)
+        {
+            LoadingScreenController.Instance.ShowLoadProgress(GetSceneLoadProgress());
+            yield return null;
+        }
+
+        // the loading screen will be closed by the player from PlayerController.cs when
+        // they hit a button
     }
 }
