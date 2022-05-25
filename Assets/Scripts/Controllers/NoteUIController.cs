@@ -19,9 +19,10 @@ public class NoteUIController
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        text.SetText(d.text);
-        titleText.SetText(d.title);
+        text.text = d.text;
+        titleText.text = d.title;
         text.pageToDisplay = 1;
+        text.ForceMeshUpdate();
         pageDisplayText.text = text.pageToDisplay.ToString() + "/" + text.textInfo.pageCount.ToString();
 
         AudioManager.Instance.PlayAudio(AudioManager.Instance.pageTurn);
