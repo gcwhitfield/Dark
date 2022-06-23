@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18da63e80808b4b5aa2178608ceca2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScene:
+    sceneAsset: {fileID: 102900000, guid: 349109a0d0ec4442da055dab60176e0c, type: 3}
+    scenePath: Assets/Scenes/LoadingScene.unity
