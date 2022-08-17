@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1579483098372514, guid: 9e813f6d79b29534baee681b1d55cc2c, type: 3}
       propertyPath: m_Name
-      value: Torch
+      value: Torch With Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4586014685430428, guid: 9e813f6d79b29534baee681b1d55cc2c, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65664873238591988, guid: 9e813f6d79b29534baee681b1d55cc2c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9e813f6d79b29534baee681b1d55cc2c, type: 3}
