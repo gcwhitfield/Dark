@@ -77,6 +77,7 @@ public class PlayerController : Singleton<PlayerController>
 
         if (context.performed || context.started)
         {
+            Debug.Log(sprintFactor);
             velocity.x = context.ReadValue<Vector2>().x * moveSpeed * sprintFactor;
             velocity.z = context.ReadValue<Vector2>().y * moveSpeed * sprintFactor;
         } else if (context.phase == InputActionPhase.Canceled || context.phase == InputActionPhase.Disabled)
@@ -99,9 +100,12 @@ public class PlayerController : Singleton<PlayerController>
         if (context.started || context.performed)
         {
             sprintFactor = sprintMovementIncreaseFactor;
-        } else if (context.phase == InputActionPhase.Canceled || context.phase == InputActionPhase.Disabled)
+            Debug.Log("Begin sprint");
+            Debug.Log(sprintFactor);
+        } else if (context.canceled)
         {
             sprintFactor = 1;
+            Debug.Log("End spring");
         } else
         {
             Debug.LogError("Context in Sprint function of PlayerController was not started or performed!?");
