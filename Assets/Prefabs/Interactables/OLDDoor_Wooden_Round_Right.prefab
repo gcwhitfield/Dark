@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 944625164235051580}
   - component: {fileID: 944625164235051578}
   m_Layer: 7
-  m_Name: Door_Wooden_Round_Right
+  m_Name: OLDDoor_Wooden_Round_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8139293648380441300}
-  m_Mesh: {fileID: 4300000, guid: d2215445189a960468755ef109efe3c4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9a3c277fcbcf42b4bb19143ef2328c9e, type: 3}
 --- !u!23 &8139293648382438420
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56,15 +56,14 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2cb987137b739894682ccea9106cd69b, type: 2}
-  - {fileID: 2100000, guid: 57c5c45402f367749a31d5f99048f829, type: 2}
+  - {fileID: 2100000, guid: ec70a734f6ba91b4aa83836229c69b0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +75,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
+  m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -166,3 +165,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   torqueVector: {x: 0, y: 0, z: 1}
+  doorOpenAmountMappingCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  doorVelocityMappingCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

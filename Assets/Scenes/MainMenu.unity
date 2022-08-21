@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene:
-    sceneAsset: {fileID: 102900000, guid: 8465714ab81a04d5bb51acba6bc1a50f, type: 3}
-    scenePath: Assets/Scenes/Testing/Dark Halls.unity
+    sceneAsset: {fileID: 102900000, guid: c02a15b67ae22437aa236fb0a8cf519e, type: 3}
+    scenePath: Assets/Scenes/Testing/Dungeon 1.unity
 --- !u!4 &1252075761
 Transform:
   m_ObjectHideFlags: 0
